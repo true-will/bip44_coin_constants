@@ -1,0 +1,56 @@
+# bip44_coin_constants
+
+# BIP44 Constants
+
+This package provides BIP44 coin constants as found here: https://github.com/satoshilabs/slips/blob/master/slip-0044.md
+
+You can read more about [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki).
+
+This package is inspired from [bitcoinjs/bip44-constants](https://github.com/bitcoinjs/bip44-constants).
+
+
+## Install
+```
+npm i --save bip44-constants
+```
+
+## Usage
+```dart
+
+import 'package:bip44_coin_constants/bip44_coin_constants.dart'
+    as bip44_coin_constants;
+import 'package:bip44_coin_constants/coin.dart';
+
+void main() {
+// iterate through constants and print all coin constants
+// format: coin name: Bitcoin; coin symbol: BTC; coin constant: 0x80000000
+
+  bip44_coin_constants.constants.forEach((Coin coin) => print(coin));
+
+// Find your coins by using where
+  List<Coin> liteCoin = bip44_coin_constants.constants
+      .where((Coin coin) => coin.coinSymbol == 'LTC')
+      .toList();
+// ---- OR on multiple elements if you are aware of duplicates
+  List<Coin> liquidBitcoin = bip44_coin_constants.constants
+      .where((Coin coin) =>
+          coin.coinSymbol == 'LBTC' && coin.coinName == 'Liquid BTC')
+      .toList();
+
+// Be sure to assert there was only one result
+  assert(liteCoin.length == 1);
+  assert(liquidBitcoin.length == 1);
+
+  print(liteCoin[0]);
+// coin name: Litecoin; coin symbol: LTC; coin constant: 0x80000002;
+  print(liquidBitcoin[0]);
+// coin name: Liquid BTC; coin symbol: LBTC; coin constant: 0x800006f0;
+
+  print(liteCoin[0].constant);
+// 2147483650 (which is 0x80000002 in hex)
+  print(liquidBitcoin[0].constant);
+// 2147485424 (which is 0x800006f0 in hex)
+}
+```
+
+## LICENSE [MIT](LICENSE)
