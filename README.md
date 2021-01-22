@@ -1,18 +1,10 @@
 # bip44_coin_constants
 
-# BIP44 Constants
-
 This package provides BIP44 coin constants as found here: https://github.com/satoshilabs/slips/blob/master/slip-0044.md
 
 You can read more about [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki).
 
 This package is inspired from [bitcoinjs/bip44-constants](https://github.com/bitcoinjs/bip44-constants).
-
-
-## Install
-```
-npm i --save bip44-constants
-```
 
 ## Usage
 ```dart
